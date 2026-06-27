@@ -16,13 +16,13 @@ def create_app():
     
     import models
 
-    from routes.auth_activites import idrissa
+    #from routes.auth_activites import idrissa
     from routes.academique import fatoumata
-    from routes.communication import elimane
+    #from routes.communication import elimane
 
-    app.register_blueprint(idrissa)
+    #app.register_blueprint(idrissa)
     app.register_blueprint(fatoumata)
-    app.register_blueprint(elimane)
+    #app.register_blueprint(elimane)
 
     with app.app_context():
         db.create_all()
