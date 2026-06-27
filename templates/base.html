@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UFR STA{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>UFR STA — UAM</h1>
+    </header>
+
+    <nav>
+        <a href="{{ url_for('idrissa.accueil') }}">Accueil</a>
+        <a href="{{ url_for('fatoumata.liste_departements') }}">Départements</a>
+        <a href="{{ url_for('fatoumata.liste_formations') }}">Formations</a>
+        <a href="{{ url_for('fatoumata.liste_enseignants') }}">Enseignants</a>
+        <a href="{{ url_for('elimane.liste_actualites') }}">Actualités</a>
+        <a href="{{ url_for('idrissa.liste_activites') }}">Activités</a>
+        <a href="{{ url_for('elimane.liste_albums') }}">Galerie</a>
+        <a href="{{ url_for('elimane.contact') }}">Contact</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>UFR STA — UAM &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
