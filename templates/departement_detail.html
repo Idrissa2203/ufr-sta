@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ dept.nom }} - UFR STA{% endblock %}
+
+{% block content %}
+<section class="departement-header">
+<h1>{{ dept.nom }}</h1>
+<div class="departement-info">
+<p><strong>Responsable :</strong> {{ dept.responsable or 'Non défini' }}</p>
+<p><strong>Contact :</strong> {{ dept.contact or 'Non défini' }}</p>
+</div>
+<div class="departement-description">
+<h2>Description</h2>
+<p>{{ dept.description or 'Aucune description disponible pour ce département.' }}</p>
+</div>
+</section>
+
+<section class="departement-formations">
+<h2>Formations proposées</h2>
+<div class="formations-grid">
+{% for formation in dept.formations %}
+<div class="formation-card">
+<h3><a href="{{ url_for('fatoumata.detail_formation', id=formation.id) }}">{{ formation.nom }}</a></h3>
+<p><strong>Niveau :</strong> {{ formation.niveau or 'Non spécifié' }}</p>
+<p><strong>Durée :</strong> {{ formation.duree or 'Non spécifiée' }}</p>
+<a href="{{ url_for('fatoumata.detail_formation', id=formation.id) }}" class="btn btn-secondary">Voir le programme</a>
+</div>
+{% else %}
+<p>Aucune formation pour ce département.</p>
+{% endfor %}
+</div>
+</section>
+
+<section class="departement-enseignants">
+<h2>Enseignants du département</h2>
+<div class="enseignants-grid">
+{% for enseignant in dept.enseignants %}
+<div class="enseignant-card">
+{% if enseignant.photo %}
+<img src="{{ url_for('static', filename='uploads/enseignants/' + enseignant.photo) }}" alt="Photo de {{ enseignant.nom }}">
+{% else %}
+<div class="placeholder-photo"><i class="fas fa-user"></i></div>
+{% endif %}
+<h3>{{ enseignant.nom }}</h3>
+<p>{{ enseignant.grade or 'Grade non spécifié' }}</p>
+<a href="{{ url_for('fatoumata.detail_enseignant', id=enseignant.id) }}" class="btn btn-secondary">Voir le profil</a>
+</div>
+{% else %}
+<p>Aucun enseignant pour ce département.</p>
+{% endfor %}
+</div>
+</section>
+{% endblock %}

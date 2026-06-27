@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ enseignant.nom }} - UFR STA{% endblock %}
+
+{% block content %}
+<section class="enseignant-header">
+<div class="enseignant-profile">
+<div class="enseignant-photo">
+{% if enseignant.photo %}
+<img src="{{ url_for('static', filename='uploads/enseignants/' + enseignant.photo) }}" alt="Photo de {{ enseignant.nom }}">
+{% else %}
+<div class="placeholder-photo"><i class="fas fa-user fa-4x"></i></div>
+{% endif %}
+</div>
+<div class="enseignant-info">
+<h1>{{ enseignant.nom }}</h1>
+<p><strong>Grade :</strong> {{ enseignant.grade or 'Non spécifié' }}</p>
+<p><strong>Département :</strong> <a href="{{ url_for('fatoumata.detail_departement', id=enseignant.departement.id) }}">{{ enseignant.departement.nom }}</a></p>
+<p><strong>Email :</strong> <a href="mailto:{{ enseignant.email }}">{{ enseignant.email or 'Non défini' }}</a></p>
+</div>
+</div>
+</section>
+
+<section class="enseignant-details">
+<div class="enseignant-section">
+<h2>Domaines de recherche</h2>
+<p>{{ enseignant.domaines_recherche or 'Non spécifiés.' }}</p>
+</div>
+</section>
+{% endblock %}

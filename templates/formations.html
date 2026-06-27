@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Formations - UFR STA{% endblock %}
+
+{% block content %}
+<section class="page-header">
+<h1>Nos Formations</h1>
+<p>Découvrez toutes les formations proposées par l'UFR STA</p>
+</section>
+
+<section class="formations-grid">
+{% for formation in formations %}
+<div class="card">
+<div class="card-content">
+<h2><a href="{{ url_for('fatoumata.detail_formation', id=formation.id) }}">{{ formation.nom }}</a></h2>
+<p><strong>Niveau :</strong> {{ formation.niveau or 'Non spécifié' }}</p>
+<p><strong>Durée :</strong> {{ formation.duree or 'Non spécifiée' }}</p>
+<p><strong>Département :</strong> {{ formation.departement.nom }}</p>
+<div class="card-footer">
+<a href="{{ url_for('fatoumata.detail_formation', id=formation.id) }}" class="btn btn-primary">Voir le programme</a>
+</div>
+</div>
+</div>
+{% else %}
+<div class="alert alert-info">
+<p>Aucune formation pour le moment. Veuillez revenir plus tard.</p>
+</div>
+{% endfor %}
+</section>
+{% endblock %}
