@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Enseignants - UFR STA{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Nos Enseignants</h1>
+    <p>Découvrez l'équipe pédagogique de l'UFR STA</p>
+</section>
+
+<section class="enseignants-grid">
+    {% for enseignant in enseignants %}
+    <div class="card">
+        <div class="card-content">
+            <div class="enseignant-photo">
+                {% if enseignant.photo %}
+                <img src="{{ url_for('static', filename='uploads/enseignants/' + enseignant.photo) }}" alt="Photo de {{ enseignant.nom }}">
+                {% else %}
+                <div class="placeholder-photo"><i class="fas fa-user"></i></div>
+                {% endif %}
+            </div>
+            <h2><a href="{{ url_for('fatoumata.detail_enseignant', id=enseignant.id) }}">{{ enseignant.nom }}</a></h2>
+            <p><strong>Grade :</strong> {{ enseignant.grade or 'Non spécifié' }}</p>
+            <p><strong>Département :</strong> {{ enseignant.departement.nom }}</p>
+            <p><strong>Email :</strong> <a href="mailto:{{ enseignant.email }}">{{ enseignant.email or 'Non défini' }}</a></p>
+            <div class="card-footer">
+                <a href="{{ url_for('fatoumata.detail_enseignant', id=enseignant.id) }}" class="btn btn-primary">Voir le profil</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+    <p>Aucun enseignant pour le moment. Veuillez revenir plus tard.</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

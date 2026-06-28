@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Départements - UFR STA{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Nos Départements</h1>
+    <p>Découvrez les départements de l'UFR STA</p>
+</section>
+
+<section class="departements-grid">
+    {% for dept in departements %}
+    <div class="card">
+        <div class="card-content">
+            <h2><a href="{{ url_for('fatoumata.detail_departement', id=dept.id) }}">{{ dept.nom }}</a></h2>
+            <p>{{ dept.description|truncate(150) if dept.description else 'Aucune description disponible.' }}</p>
+            <div class="card-footer">
+                <span><strong>Responsable :</strong> {{ dept.responsable or 'Non défini' }}</span>
+                <span><strong>Contact :</strong> {{ dept.contact or 'Non défini' }}</span>
+                <a href="{{ url_for('fatoumata.detail_departement', id=dept.id) }}" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <p>Aucun département pour le moment. Veuillez revenir plus tard.</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
