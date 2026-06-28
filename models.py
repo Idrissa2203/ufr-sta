@@ -5,7 +5,7 @@ from extensions import db
 # ==============================
 #  Idrissa
 # ==============================
-
+'''
 class Admin(db.Model):
     __tablename__ = "admins"
     id = db.Column(db.Integer, primary_key=True)
@@ -27,7 +27,7 @@ class Activite(db.Model):
     description = db.Column(db.Text)
     cree_le = db.Column(db.DateTime, default=datetime.utcnow)
 
-
+'''
 # ==============================
 #  Fatoumata
 # ==============================
@@ -67,7 +67,7 @@ class Enseignant(db.Model):
 # ==============================
 #  Elimane
 # ==============================
-
+'''
 class Actualite(db.Model):
     __tablename__ = "actualites"
     id = db.Column(db.Integer, primary_key=True)
@@ -94,3 +94,4 @@ class MessageContact(db.Model):
     sujet = db.Column(db.String(200))
     message = db.Column(db.Text, nullable=False)
     envoye_le = db.Column(db.DateTime, default=datetime.utcnow)
+'''

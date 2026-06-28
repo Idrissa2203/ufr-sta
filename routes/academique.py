@@ -6,6 +6,10 @@ fatoumata = Blueprint('fatoumata', __name__)
 # ROUTES PUBLIQUES - Départements, Formations, Enseignants (Fatoumata)
 # ==============================================
 
+@fatoumata.route('/')
+def accueil():
+    return render_template('base.html')
+
 @fatoumata.route('/departements')
 def liste_departements():
     from models import Departement
