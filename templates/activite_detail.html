@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ activite.titre }}{% endblock %}
+
+{% block content %}
+
+    <section>
+        <article>
+            <h2>{{ activite.titre }}</h2>
+            <p>Date : {{ activite.date }}</p>
+            <p>Lieu : {{ activite.lieu }}</p>
+            <p>Organisateur : {{ activite.organisateur }}</p>
+            <p>{{ activite.description }}</p>
+        </article>
+
+        <a href="{{ url_for('idrissa.liste_activites') }}">
+            Retour aux activités
+        </a>
+    </section>
+
+{% endblock %}

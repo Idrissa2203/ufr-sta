@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Connexion Admin{% endblock %}
+
+{% block content %}
+
+    <section>
+        <h2>Espace Administration</h2>
+
+        <form method="post">
+            <label>Email :</label>
+            <input type="email" name="email" required>
+
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </section>
+
+{% endblock %}
