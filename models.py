@@ -40,6 +40,10 @@ class Departement(db.Model):
     responsable = db.Column(db.String(150))
     contact = db.Column(db.String(150))
 
+    #Relations
+    formations=db.relationship('Formation', back_populates='departement', cascade='all, delete-orphan')
+    enseignants=db.relationship('Enseignant', back_populates='departement', cascade='all, delete-orphan')
+
 
 class Formation(db.Model):
     __tablename__ = "formations"
@@ -52,6 +56,10 @@ class Formation(db.Model):
     debouches = db.Column(db.Text)
     programme = db.Column(db.Text)
 
+    #Relations
+    departement = db.relationship('Departement', back_populates='formations')
+
+
 
 class Enseignant(db.Model):
     __tablename__ = "enseignants"
@@ -62,6 +70,10 @@ class Enseignant(db.Model):
     email = db.Column(db.String(150))
     domaines_recherche = db.Column(db.Text)
     photo = db.Column(db.String(255))
+
+    #Relations
+    departement = db.relationship('Departement', back_populates='enseignants')
+
 
 
 # ==============================
