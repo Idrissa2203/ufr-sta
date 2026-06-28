@@ -4,30 +4,30 @@
 
 {% block content %}
 <section class="formation-header">
-<h1>{{ formation.nom }}</h1>
-<div class="formation-info">
-<p><strong>Niveau :</strong> {{ formation.niveau or 'Non spécifié' }}</p>
-<p><strong>Durée :</strong> {{ formation.duree or 'Non spécifiée' }}</p>
-<p><strong>Département :</strong> <a href="{{ url_for('fatoumata.detail_departement', id=formation.departement.id) }}">{{ formation.departement.nom }}</a></p>
-</div>
+    <h1>{{ formation.nom }}</h1>
+    <div class="formation-info">
+        <p><strong>Niveau :</strong> {{ formation.niveau or 'Non spécifié' }}</p>
+        <p><strong>Durée :</strong> {{ formation.duree or 'Non spécifiée' }}</p>
+        <p><strong>Département :</strong> <a href="{{ url_for('fatoumata.detail_departement', id=formation.departement.id) }}">{{ formation.departement.nom }}</a></p>
+    </div>
 </section>
 
 <section class="formation-details">
-<div class="formation-section">
-<h2>Conditions d'admission</h2>
-<p>{{ formation.conditions_admission or 'Non spécifiées.' }}</p>
-</div>
+    <div class="formation-section">
+        <h2>Conditions d'admission</h2>
+        <p>{{ formation.conditions_admission or 'Non spécifiées.' }}</p>
+    </div>
 
-<div class="formation-section">
-<h2>Débouchés</h2>
-<p>{{ formation.debouches or 'Non spécifiés.' }}</p>
-</div>
+    <div class="formation-section">
+        <h2>Débouchés</h2>
+        <p>{{ formation.debouches or 'Non spécifiés.' }}</p>
+    </div>
 
-<div class="formation-section">
-<h2>Programme détaillé</h2>
-<div class="programme-content">
-{{ formation.programme|safe or 'Programme non disponible.' }}
-</div>
-</div>
+    <div class="formation-section">
+        <h2>Programme détaillé</h2>
+        <div class="programme-content">
+            {{ formation.programme|safe or 'Programme non disponible.' }}
+        </div>
+    </div>
 </section>
 {% endblock %}
