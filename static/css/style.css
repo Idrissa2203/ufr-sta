@@ -14,7 +14,7 @@ body {
 
 /* Header et navigation */
 header {
-    background: #1a5276;
+    background: #5d2e0c;
     color: rgb(241, 238, 238);
     padding: 1rem 2rem;
     text-align: center;
@@ -192,7 +192,7 @@ main {
 
 /* Footer */
 footer {
-    background: #1a5276;
+    background: #5d2e0c;
     color: white;
     text-align: center;
     padding: 1.5rem;
